@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painting Gallery | Painting Auctions</title>
+    <link rel="stylesheet" href="gallery.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Painting Auctions</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="gallery.html" class="active">Gallery</a></li>
+                    <li><a href="artists.html">Artists</a></li>
+                    <li><a href="auctions.html">Auctions</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="kart.html" class="btn btn-outline">Cart (<span id="cart-count">0</span>)</a>
+                <a href="payment.html" class="btn btn-outline">Payment</a>
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="signup.html" class="btn btn-primary">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Gallery -->
+    <section class="featured-artworks">
+        <div class="container">
+            <div class="section-header">
+                <h2>Painting Gallery</h2>
+                <div class="gallery-controls">
+                    <input type="text" class="search-input" placeholder="Search artworks or artists...">
+                    <div class="gallery-filters">
+                        <select class="filter-select">
+                            <option value="all">All Types</option>
+                            <option value="live auction">Live Auction</option>
+                            <option value="fixed price">Fixed Price</option>
+                            <option value="ending soon">Ending Soon</option>
+                        </select>
+                        <select class="filter-select">
+                            <option value="all">All Artists</option>
+                            <option value="jane smith">Jane Smith</option>
+                            <option value="michael johnson">Michael Johnson</option>
+                            <option value="sarah williams">Sarah Williams</option>
+                            <option value="david brown">David Brown</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="artwork-grid">
+                <a href="artwork-detail.html" class="artwork-card">
+                    <img src="images/new images/painting 1.webp" alt="Artwork 1">
+                    <div class="artwork-info">
+                        <h3>Sunset Over the Mountains</h3>
+                        <p class="artist">By Jane Smith</p>
+                        <div class="artwork-meta">
+                            <span class="price">$450</span>
+                            <span class="auction">Live Auction</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="artwork-detail.html" class="artwork-card">
+                    <img src="images/new images/painting 2.jpg" alt="Artwork 2">
+                    <div class="artwork-info">
+                        <h3>Urban Reflections</h3>
+                        <p class="artist">By Michael Johnson</p>
+                        <div class="artwork-meta">
+                            <span class="price">$680</span>
+                            <span class="auction">Live Auction</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="artwork-detail.html" class="artwork-card">
+                    <img src="images/new images/painting 3.jpg" alt="Artwork 3">
+                    <div class="artwork-info">
+                        <h3>Ocean Waves</h3>
+                        <p class="artist">By Sarah Williams</p>
+                        <div class="artwork-meta">
+                            <span class="price">$320</span>
+                            <span class="auction">Ending Soon</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="artwork-detail.html" class="artwork-card">
+                    <img src="images/new images/painting 4.jpg" alt="Artwork 4">
+                    <div class="artwork-info">
+                        <h3>Abstract Harmony</h3>
+                        <p class="artist">By David Brown</p>
+                        <div class="artwork-meta">
+                            <span class="price">$550</span>
+                            <span class="auction">Fixed Price</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="artwork-detail.html" class="artwork-card">
+                    <img src="images/new images/painting 5.jpg" alt="Artwork 5">
+                    <div class="artwork-info">
+                        <h3>Mountain Lake</h3>
+                        <p class="artist">By Jane Smith</p>
+                        <div class="artwork-meta">
+                            <span class="price">$380</span>
+                            <span class="auction">Fixed Price</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="artwork-detail.html" class="artwork-card">
+                    <img src="images/new images/painting 6.jpg" alt="Artwork 6">
+                    <div class="artwork-info">
+                        <h3>Desert Sunrise</h3>
+                        <p class="artist">By Jane Smith</p>
+                        <div class="artwork-meta">
+                            <span class="price">$520</span>
+                            <span class="auction">Live Auction</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="artwork-detail.html" class="artwork-card">
+                    <img src="images/new images/painting 7.jpeg" alt="Artwork 7">
+                    <div class="artwork-info">
+                        <h3>Forest Path</h3>
+                        <p class="artist">By Jane Smith</p>
+                        <div class="artwork-meta">
+                            <span class="price">$410</span>
+                            <span class="auction">Fixed Price</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="artwork-detail.html" class="artwork-card">
+                    <img src="images/new images/painting 8.jpg" alt="Artwork 8">
+                    <div class="artwork-info">
+                        <h3>City Lights</h3>
+                        <p class="artist">By Michael Johnson</p>
+                        <div class="artwork-meta">
+                            <span class="price">$720</span>
+                            <span class="auction">Live Auction</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Painting Auctions</h3>
+                    <p>Supporting local artists and connecting art lovers with unique paintings.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="artists.html">Artists</a></li>
+                        <li><a href="auctions.html">Auctions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Painting Auctions. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

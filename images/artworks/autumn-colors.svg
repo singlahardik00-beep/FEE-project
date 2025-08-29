@@ -1,0 +1,76 @@
+<svg width="400" height="300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background - Autumn sky -->
+  <defs>
+    <linearGradient id="autumnSky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff7675;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#fdcb6e;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#e17055;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d63031;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="treeGradient1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e17055;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#d63031;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="treeGradient2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#fdcb6e;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#e17055;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="treeGradient3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#00b894;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#fdcb6e;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Sky -->
+  <rect width="100%" height="100%" fill="url(#autumnSky)"/>
+  
+  <!-- Sun -->
+  <circle cx="350" cy="60" r="25" fill="#fdcb6e"/>
+  <circle cx="350" cy="60" r="35" fill="#fdcb6e" opacity="0.3"/>
+  
+  <!-- Trees with autumn colors -->
+  <circle cx="80" cy="120" r="30" fill="url(#treeGradient1)"/>
+  <circle cx="150" cy="100" r="35" fill="url(#treeGradient2)"/>
+  <circle cx="220" cy="130" r="28" fill="url(#treeGradient3)"/>
+  <circle cx="290" cy="110" r="32" fill="url(#treeGradient1)"/>
+  <circle cx="360" cy="125" r="26" fill="url(#treeGradient2)"/>
+  
+  <!-- Tree trunks -->
+  <rect x="70" y="150" width="8" height="30" fill="#8b4513"/>
+  <rect x="140" y="135" width="8" height="30" fill="#8b4513"/>
+  <rect x="210" y="158" width="8" height="30" fill="#8b4513"/>
+  <rect x="280" y="142" width="8" height="30" fill="#8b4513"/>
+  <rect x="350" y="151" width="8" height="30" fill="#8b4513"/>
+  
+  <!-- Ground -->
+  <rect x="0" y="180" width="400" height="120" fill="#8b4513"/>
+  
+  <!-- Fallen leaves -->
+  <ellipse cx="50" cy="190" rx="4" ry="3" fill="#e17055"/>
+  <ellipse cx="80" cy="185" rx="3" ry="4" fill="#fdcb6e"/>
+  <ellipse cx="120" cy="195" rx="4" ry="3" fill="#d63031"/>
+  <ellipse cx="150" cy="188" rx="3" ry="4" fill="#e17055"/>
+  <ellipse cx="180" cy="192" rx="4" ry="3" fill="#fdcb6e"/>
+  <ellipse cx="220" cy="186" rx="3" ry="4" fill="#d63031"/>
+  <ellipse cx="250" cy="194" rx="4" ry="3" fill="#e17055"/>
+  <ellipse cx="280" cy="189" rx="3" ry="4" fill="#fdcb6e"/>
+  <ellipse cx="320" cy="193" rx="4" ry="3" fill="#d63031"/>
+  <ellipse cx="350" cy="187" rx="3" ry="4" fill="#e17055"/>
+  <ellipse cx="380" cy="191" rx="4" ry="3" fill="#fdcb6e"/>
+  
+  <!-- More scattered leaves -->
+  <ellipse cx="30" cy="200" rx="2" ry="3" fill="#e17055"/>
+  <ellipse cx="100" cy="205" rx="3" ry="2" fill="#fdcb6e"/>
+  <ellipse cx="170" cy="198" rx="2" ry="3" fill="#d63031"/>
+  <ellipse cx="240" cy="203" rx="3" ry="2" fill="#e17055"/>
+  <ellipse cx="310" cy="197" rx="2" ry="3" fill="#fdcb6e"/>
+  <ellipse cx="370" cy="202" rx="3" ry="2" fill="#d63031"/>
+  
+  <!-- Birds -->
+  <path d="M 60 80 Q 65 75 70 80 Q 75 85 80 80" stroke="#2c3e50" stroke-width="1" fill="none"/>
+  <path d="M 200 70 Q 205 65 210 70 Q 215 75 220 70" stroke="#2c3e50" stroke-width="1" fill="none"/>
+  <path d="M 340 85 Q 345 80 350 85 Q 355 90 360 85" stroke="#2c3e50" stroke-width="1" fill="none"/>
+  
+  <!-- Title -->
+  <text x="200" y="290" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#2c3e50" text-anchor="middle">Autumn Colors</text>
+</svg>

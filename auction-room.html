@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auction Room | Painting Auctions</title>
+    <link rel="stylesheet" href="auction-room.css">
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="dns-prefetch" href="https://images.unsplash.com">
+    </head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Painting Auctions</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="artists.html">Artists</a></li>
+                    <li><a href="auctions.html" class="active">Auctions</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="kart.html" class="btn btn-outline">Cart (<span id="cart-count">0</span>)</a>
+                <a href="payment.html" class="btn btn-outline">Payment</a>
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="signup.html" class="btn btn-primary">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="auction-room-hero">
+        <div class="container">
+            <h1>Live Auction Room</h1>
+            <p>Bid in real-time on original artworks and support local artists.</p>
+        </div>
+    </section>
+
+    <!-- Auction Room -->
+    <section class="auction-room-section">
+        <div class="container">
+            <h2>Sunset Over the Mountains</h2>
+            <div class="auction-room-content">
+                <div class="artwork-display">
+                    <img class="artwork-image" src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80" alt="Sunset Over the Mountains">
+                    <div class="artwork-info">
+                        <h3>Sunset Over the Mountains</h3>
+                        <div class="artwork-artist">By Jane Smith</div>
+                        <p class="artwork-description">A serene landscape capturing the warm glow of sunset over the Rocky Mountains, painted in rich oils with vibrant, layered colors.</p>
+                        <button class="btn btn-primary add-to-cart-btn" data-id="auction-artwork" data-name="Sunset Over the Mountains" data-price="450" data-image="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=600&q=80">Add to Cart</button>
+                    </div>
+                </div>
+
+                <aside class="auction-details">
+                    <h3>Live Auction</h3>
+                    <div class="current-bid">
+                        <div class="current-bid-amount">$450</div>
+                        <div class="current-bid-label">Current Bid</div>
+                    </div>
+                    <div class="time-remaining" data-end-time="2024-12-31T23:59:59">
+                        <div class="time-remaining-label">Auction Ends In</div>
+                        <div class="countdown">12h 34m 56s</div>
+                    </div>
+                    <form class="bid-form" data-current-bid="450">
+                        <label for="bid-amount">Bid Amount (USD)</label>
+                        <input id="bid-amount" type="number" min="475" step="5" placeholder="Minimum $475">
+                        <button type="submit" class="btn btn-primary place-bid-btn">Place Bid</button>
+                    </form>
+                    <div class="bid-history">
+                        <h4>Bid History</h4>
+                        <div class="bid-item">
+                            <div class="bidder">User123</div>
+                            <div>
+                                <span class="bid-amount">$450</span>
+                                <span class="bid-time">2 hours ago</span>
+                            </div>
+                        </div>
+                        <div class="bid-item">
+                            <div class="bidder">ArtLover</div>
+                            <div>
+                                <span class="bid-amount">$425</span>
+                                <span class="bid-time">3 hours ago</span>
+                            </div>
+                        </div>
+                        <div class="bid-item">
+                            <div class="bidder">CollectorPro</div>
+                            <div>
+                                <span class="bid-amount">$400</span>
+                                <span class="bid-time">5 hours ago</span>
+                            </div>
+                        </div>
+                        <div class="bid-item">
+                            <div class="bidder">ArtEnthusiast</div>
+                            <div>
+                                <span class="bid-amount">$375</span>
+                                <span class="bid-time">6 hours ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Painting Auctions</h3>
+                    <p>Supporting local artists and connecting art lovers with unique paintings.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="artists.html">Artists</a></li>
+                        <li><a href="auctions.html">Auctions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Local Art Showcase. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof initAuctionRoom === 'function') {
+                initAuctionRoom();
+            }
+        });
+    </script>
+</body>
+</html>

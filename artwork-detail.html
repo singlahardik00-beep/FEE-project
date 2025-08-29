@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artwork Detail | Painting Auctions</title>
+    <link rel="stylesheet" href="artwork-detail.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Painting Auctions</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="gallery.html" class="active">Gallery</a></li>
+                    <li><a href="artists.html">Artists</a></li>
+                    <li><a href="auctions.html">Auctions</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="kart.html" class="btn btn-outline">Cart (<span id="cart-count">0</span>)</a>
+                <a href="payment.html" class="btn btn-outline">Payment</a>
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="signup.html" class="btn btn-primary">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Artwork Detail -->
+    <section class="artwork-detail">
+        <div class="container artwork-detail-container">
+            <div class="artwork-images">
+                <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80" alt="Sunset Over the Mountains" class="main-image">
+                <div class="thumbnails">
+                    <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=200&q=80" alt="Artwork 1" class="thumbnail active">
+                    <img src="https://images.unsplash.com/photo-1496284045406-d3e0b918d7ba?auto=format&fit=crop&w=200&q=80" alt="Artwork 2" class="thumbnail">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=200&q=80" alt="Artwork 3" class="thumbnail">
+                    <img src="https://images.unsplash.com/photo-1470115636492-6d2b56f9146e?auto=format&fit=crop&w=200&q=80" alt="Artwork 4" class="thumbnail">
+                </div>
+            </div>
+            <div class="artwork-details">
+                <h1>Sunset Over the Mountains</h1>
+                <div class="artist-info">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80" alt="Artist" class="artist-avatar">
+                    <div>
+                        <div class="artist-name">Jane Smith</div>
+                        <div class="artist-location">Boulder, CO</div>
+                    </div>
+                </div>
+                <div class="artwork-meta-detail">
+                    <div class="meta-item">
+                        <span class="meta-label">Category</span>
+                        <span class="meta-value">Landscape</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Size</span>
+                        <span class="meta-value">24" x 36"</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-label">Medium</span>
+                        <span class="meta-value">Oil on Canvas</span>
+                    </div>
+                </div>
+                <div class="description">
+                    <p>This stunning landscape captures the beauty of a sunset over the Rocky Mountains. Painted during a plein air session in Rocky Mountain National Park, this piece showcases the vibrant colors of the evening sky reflected on the mountain peaks.</p>
+                    <p>The painting measures 24" x 36" and is framed in a beautiful walnut frame. The colors are rich and vibrant, with deep purples and oranges in the sky contrasting with the dark silhouettes of the mountains.</p>
+                </div>
+                <div class="auction-info">
+                    <h3>Live Auction</h3>
+                    <div class="bid-info">
+                        <div class="current-bid">
+                            <span class="meta-label">Current Bid</span>
+                            <span class="bid-amount">$450</span>
+                        </div>
+                        <div class="auction-end">
+                            <span class="meta-label">Auction Ends In</span>
+                            <span class="meta-value">12h 34m 56s</span>
+                        </div>
+                    </div>
+                    <form class="bid-form">
+                        <input type="number" class="bid-input" placeholder="Enter your bid" min="475" step="5">
+                        <button type="submit" class="bid-button">Place Bid</button>
+                    </form>
+                    <div class="bid-history">
+                        <h4>Bid History</h4>
+                        <div class="bids">
+                            <div class="bid">
+                                <div class="bidder">User123</div>
+                                <div class="bid-details">
+                                    <span class="bid-amount">$450</span>
+                                    <span class="bid-time">2 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="bid">
+                                <div class="bidder">ArtLover</div>
+                                <div class="bid-details">
+                                    <span class="bid-amount">$425</span>
+                                    <span class="bid-time">3 hours ago</span>
+                                </div>
+                            </div>
+                            <div class="bid">
+                                <div class="bidder">CollectorPro</div>
+                                <div class="bid-details">
+                                    <span class="bid-amount">$400</span>
+                                    <span class="bid-time">5 hours ago</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-primary add-to-cart-btn" data-id="detail-artwork" data-name="Sunset Over the Mountains" data-price="450" data-image="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=600&q=80">Add to Cart</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Artworks -->
+    <section class="featured-artworks">
+        <div class="container">
+            <div class="section-header">
+                <h2>More from Jane Smith</h2>
+                <a href="#" class="view-all">View All</a>
+            </div>
+            <div class="artwork-grid">
+                <a href="artwork-detail.html" class="artwork-card">
+                    <img src="https://images.unsplash.com/photo-1496483648148-47c686dc86a8?auto=format&fit=crop&w=1200&q=80" alt="Artwork 1">
+                    <div class="artwork-info">
+                        <h3>Mountain Lake</h3>
+                        <p class="artist">By Jane Smith</p>
+                        <div class="artwork-meta">
+                            <span class="price">$380</span>
+                            <span class="auction">Fixed Price</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="artwork-detail.html" class="artwork-card">
+                    <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80" alt="Artwork 2">
+                    <div class="artwork-info">
+                        <h3>Desert Sunrise</h3>
+                        <p class="artist">By Jane Smith</p>
+                        <div class="artwork-meta">
+                            <span class="price">$520</span>
+                            <span class="auction">Live Auction</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="artwork-detail.html" class="artwork-card">
+                    <img src="https://images.unsplash.com/photo-1470115636492-6d2b56f9146e?auto=format&fit=crop&w=1200&q=80" alt="Artwork 3">
+                    <div class="artwork-info">
+                        <h3>Forest Path</h3>
+                        <p class="artist">By Jane Smith</p>
+                        <div class="artwork-meta">
+                            <span class="price">$410</span>
+                            <span class="auction">Fixed Price</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Painting Auctions</h3>
+                    <p>Supporting local artists and connecting art lovers with unique paintings.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#">Gallery</a></li>
+                        <li><a href="#">Artists</a></li>
+                        <li><a href="#">Auctions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Painting Auctions. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Initialize artwork detail functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            initArtworkDetail();
+        });
+    </script>
+</body>
+</html>

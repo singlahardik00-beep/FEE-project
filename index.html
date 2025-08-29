@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painting Auctions | Buy and Auction Local Paintings</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Painting Auctions</h1>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Home</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="artists.html">Artists</a></li>
+                    <li><a href="auctions.html">Auctions</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="kart.html" class="btn btn-outline">Cart (<span id="cart-count">0</span>)</a>
+                <a href="payment.html" class="btn btn-outline">Payment</a>
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="signup.html" class="btn btn-primary">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section with Slider -->
+    <section class="hero">
+        <div class="hero-slider" aria-label="Featured highlights slider">
+            <div class="hero-slides">
+                <div class="hero-slide active" data-index="0" style="background-image:url('images/artworks/painting1.svg')">
+                    <div class="container">
+                        <div class="hero-content">
+                            <h1 class="color-accent-2">Discover and Collect Local Paintings</h1>
+                            <p>Support local artists and find unique paintings for your collection through our online gallery and real-time auctions.</p>
+                            <div class="hero-buttons">
+                                <a href="gallery.html" class="btn btn-primary">Explore Gallery</a>
+                                <a href="auctions.html" class="btn btn-outline">Join Auction</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-slide" data-index="1" style="background-image:url('images/artworks/painting2.svg')">
+                    <div class="container">
+                        <div class="hero-content">
+                            <h1 class="color-accent-2">Bid Live. Win Originals.</h1>
+                            <p>Experience exciting live auctions and bring home one-of-a-kind paintings.</p>
+                            <div class="hero-buttons">
+                                <a href="auctions.html" class="btn btn-primary">Live Auctions</a>
+                                <a href="gallery.html" class="btn btn-outline">Browse Paintings</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-slide" data-index="2" style="background-image:url('images/artworks/painting3.svg')">
+                    <div class="container">
+                        <div class="hero-content">
+                            <h1 class="color-accent-2">Support Local Talent</h1>
+                            <p>Every purchase directly supports local painting artists in your community.</p>
+                            <div class="hero-buttons">
+                                <a href="artists.html" class="btn btn-primary">Meet Artists</a>
+                                <a href="signup.html" class="btn btn-outline">Join Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="hero-nav prev" aria-label="Previous slide">&#10094;</button>
+            <button class="hero-nav next" aria-label="Next slide">&#10095;</button>
+            <div class="hero-dots" role="tablist" aria-label="Slide dots">
+                <button class="hero-dot active" data-index="0" aria-label="Slide 1" aria-selected="true"></button>
+                <button class="hero-dot" data-index="1" aria-label="Slide 2" aria-selected="false"></button>
+                <button class="hero-dot" data-index="2" aria-label="Slide 3" aria-selected="false"></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Paintings -->
+    <section class="featured-artworks">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Paintings</h2>
+                <a href="gallery.html" class="view-all">View All</a>
+            </div>
+            <div class="artwork-grid">
+                <div class="artwork-card">
+                    <img src="images/artworks/painting1.svg" alt="Vibrant Abstract">
+                    <div class="artwork-info">
+                        <h3>Vibrant Abstract</h3>
+                        <p class="artist">By Jane Smith</p>
+                        <div class="artwork-meta">
+                            <span class="price">$450</span>
+                            <span class="auction">Live Auction</span>
+                        </div>
+                        <button class="btn btn-primary add-to-cart-btn" 
+                                data-id="painting1" 
+                                data-name="Vibrant Abstract" 
+                                data-price="450" 
+                                data-image="images/artworks/painting1.svg">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="artwork-card">
+                    <img src="images/artworks/painting2.svg" alt="Color Fields">
+                    <div class="artwork-info">
+                        <h3>Color Fields</h3>
+                        <p class="artist">By Michael Johnson</p>
+                        <div class="artwork-meta">
+                            <span class="price">$680</span>
+                            <span class="auction">Live Auction</span>
+                        </div>
+                        <button class="btn btn-primary add-to-cart-btn" 
+                                data-id="painting2" 
+                                data-name="Color Fields" 
+                                data-price="680" 
+                                data-image="images/artworks/painting2.svg">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="artwork-card">
+                    <img src="images/artworks/painting3.svg" alt="Oceanic Hues">
+                    <div class="artwork-info">
+                        <h3>Oceanic Hues</h3>
+                        <p class="artist">By Sarah Williams</p>
+                        <div class="artwork-meta">
+                            <span class="price">$320</span>
+                            <span class="auction">Ending Soon</span>
+                        </div>
+                        <button class="btn btn-primary add-to-cart-btn" 
+                                data-id="painting3" 
+                                data-name="Oceanic Hues" 
+                                data-price="320" 
+                                data-image="images/artworks/painting3.svg">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="artwork-card">
+                    <img src="images/artworks/painting4.svg" alt="Abstract Harmony">
+                    <div class="artwork-info">
+                        <h3>Abstract Harmony</h3>
+                        <p class="artist">By David Brown</p>
+                        <div class="artwork-meta">
+                            <span class="price">$550</span>
+                            <span class="auction">Fixed Price</span>
+                        </div>
+                        <button class="btn btn-primary add-to-cart-btn" 
+                                data-id="painting4" 
+                                data-name="Abstract Harmony" 
+                                data-price="550" 
+                                data-image="images/artworks/painting4.svg">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="artwork-card">
+                    <img src="images/artworks/autumn-colors.svg" alt="Autumn Colors">
+                    <div class="artwork-info">
+                        <h3>Autumn Colors</h3>
+                        <p class="artist">By Emma Clark</p>
+                        <div class="artwork-meta">
+                            <span class="price">$410</span>
+                            <span class="auction">Fixed Price</span>
+                        </div>
+                        <button class="btn btn-primary add-to-cart-btn" 
+                                data-id="painting5" 
+                                data-name="Autumn Colors" 
+                                data-price="410" 
+                                data-image="images/artworks/autumn-colors.svg">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+                <div class="artwork-card">
+                    <img src="images/artworks/mountain-lake.svg" alt="Mountain Lake">
+                    <div class="artwork-info">
+                        <h3>Mountain Lake</h3>
+                        <p class="artist">By Olivia Green</p>
+                        <div class="artwork-meta">
+                            <span class="price">$380</span>
+                            <span class="auction">Live Auction</span>
+                        </div>
+                        <button class="btn btn-primary add-to-cart-btn" 
+                                data-id="painting6" 
+                                data-name="Mountain Lake" 
+                                data-price="380" 
+                                data-image="images/artworks/mountain-lake.svg">
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2>How It Works</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Browse Paintings</h3>
+                    <p>Explore our gallery of local paintings from talented artists in your community.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Join Auctions</h3>
+                    <p>Participate in real-time auctions or purchase paintings at fixed prices.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Win & Collect</h3>
+                    <p>Secure your favorite paintings and arrange for delivery or pickup.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Start Collecting?</h2>
+                <p>Join thousands of art lovers who have discovered amazing paintings through our platform.</p>
+                <div class="cta-buttons">
+                    <a href="signup.html" class="btn btn-primary">Get Started</a>
+                    <a href="about.html" class="btn btn-outline">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Painting Auctions</h3>
+                    <p>Supporting local artists and connecting art lovers with unique paintings.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="artists.html">Artists</a></li>
+                        <li><a href="auctions.html">Auctions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Painting Auctions. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

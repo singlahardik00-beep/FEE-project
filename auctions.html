@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Painting Auctions | Painting Auctions</title>
+    <link rel="stylesheet" href="auctions.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>Painting Auctions</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="artists.html">Artists</a></li>
+                    <li><a href="auctions.html" class="active">Auctions</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="kart.html" class="btn btn-outline">Cart (<span id="cart-count">0</span>)</a>
+                <a href="payment.html" class="btn btn-outline">Payment</a>
+                <a href="login.html" class="btn btn-outline">Login</a>
+                <a href="signup.html" class="btn btn-primary">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Live Auctions -->
+    <section class="live-auctions">
+        <div class="container">
+            <div class="section-header">
+                <h2>Live Painting Auctions</h2>
+                <div class="auction-filters">
+                    <select class="filter-select">
+                        <option>Paintings</option>
+                    </select>
+                    <select class="filter-select">
+                        <option>Ending Soon</option>
+                        <option>Recently Started</option>
+                        <option>Most Bids</option>
+                    </select>
+                </div>
+            </div>
+            <div class="auction-grid">
+                <div class="auction-card">
+                    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80" alt="Sunset Over the Mountains" class="auction-image">
+                    <div class="auction-info">
+                        <h3>Sunset Over the Mountains</h3>
+                        <p class="artist">By Jane Smith</p>
+                        <div class="auction-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Current Bid</span>
+                                <span class="detail-value">$450</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Bid Count</span>
+                                <span class="detail-value">12</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Ends In</span>
+                                <span class="detail-value">2h 15m</span>
+                            </div>
+                        </div>
+                        <a href="auction-room.html" class="btn btn-primary">Join Auction</a>
+                    </div>
+                </div>
+                <div class="auction-card">
+                    <img src="https://images.unsplash.com/photo-1496483648148-47c686dc86a8?auto=format&fit=crop&w=1200&q=80" alt="Urban Reflections" class="auction-image">
+                    <div class="auction-info">
+                        <h3>Urban Reflections</h3>
+                        <p class="artist">By Michael Johnson</p>
+                        <div class="auction-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Current Bid</span>
+                                <span class="detail-value">$680</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Bid Count</span>
+                                <span class="detail-value">8</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Ends In</span>
+                                <span class="detail-value">5h 30m</span>
+                            </div>
+                        </div>
+                        <a href="auction-room.html" class="btn btn-primary">Join Auction</a>
+                    </div>
+                </div>
+                <div class="auction-card">
+                    <img src="https://images.unsplash.com/photo-1470115636492-6d2b56f9146e?auto=format&fit=crop&w=1200&q=80" alt="City Lights" class="auction-image">
+                    <div class="auction-info">
+                        <h3>City Lights</h3>
+                        <p class="artist">By Michael Johnson</p>
+                        <div class="auction-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Current Bid</span>
+                                <span class="detail-value">$720</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Bid Count</span>
+                                <span class="detail-value">15</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Ends In</span>
+                                <span class="detail-value">12h 45m</span>
+                            </div>
+                        </div>
+                        <a href="auction-room.html" class="btn btn-primary">Join Auction</a>
+                    </div>
+                </div>
+                <div class="auction-card">
+                    <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80" alt="Desert Sunrise" class="auction-image">
+                    <div class="auction-info">
+                        <h3>Desert Sunrise</h3>
+                        <p class="artist">By Jane Smith</p>
+                        <div class="auction-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Current Bid</span>
+                                <span class="detail-value">$520</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Bid Count</span>
+                                <span class="detail-value">6</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Ends In</span>
+                                <span class="detail-value">18h 20m</span>
+                            </div>
+                        </div>
+                        <a href="auction-room.html" class="btn btn-primary">Join Auction</a>
+                    </div>
+                </div>
+                <div class="auction-card">
+                    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=80" alt="Abstract Harmony" class="auction-image">
+                    <div class="auction-info">
+                        <h3>Abstract Harmony</h3>
+                        <p class="artist">By David Brown</p>
+                        <div class="auction-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Current Bid</span>
+                                <span class="detail-value">$550</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Bid Count</span>
+                                <span class="detail-value">9</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Ends In</span>
+                                <span class="detail-value">1d 3h</span>
+                            </div>
+                        </div>
+                        <a href="auction-room.html" class="btn btn-primary">Join Auction</a>
+                    </div>
+                </div>
+                <div class="auction-card">
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80" alt="Ocean Waves" class="auction-image">
+                    <div class="auction-info">
+                        <h3>Ocean Waves</h3>
+                        <p class="artist">By Sarah Williams</p>
+                        <div class="auction-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Current Bid</span>
+                                <span class="detail-value">$320</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Bid Count</span>
+                                <span class="detail-value">4</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Ends In</span>
+                                <span class="detail-value">Ending Soon</span>
+                            </div>
+                        </div>
+                        <a href="auction-room.html" class="btn btn-primary">Join Auction</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Painting Auctions</h3>
+                    <p>Supporting local artists and connecting art lovers with unique paintings.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="artists.html">Artists</a></li>
+                        <li><a href="auctions.html">Auctions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Local Art Showcase. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
