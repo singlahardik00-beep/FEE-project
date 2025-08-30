@@ -6,6 +6,64 @@
     <title>Painting Auctions | Buy and Auction Local Paintings</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="index.css">
+    <style>
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 8px 15px;
+            border-radius: 25px;
+            color: white;
+            font-weight: 500;
+        }
+        
+        .user-name {
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .logout-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .logout-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .auth-buttons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .user-profile {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .user-info {
+                flex-direction: column;
+                text-align: center;
+                padding: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -32,8 +90,16 @@
             <div class="auth-buttons">
                 <a href="kart.html" class="btn btn-outline">Cart (<span id="cart-count">0</span>)</a>
                 <a href="payment.html" class="btn btn-outline">Payment</a>
-                <a href="login.html" class="btn btn-outline">Login</a>
-                <a href="signup.html" class="btn btn-primary">Sign Up</a>
+                <div id="user-profile" class="user-profile" style="display: none;">
+                    <div class="user-info">
+                        <span class="user-name" id="user-name"></span>
+                        <button class="logout-btn" onclick="logout()">Logout</button>
+                    </div>
+                </div>
+                <div id="auth-links">
+                    <a href="login.html" class="btn btn-outline">Login</a>
+                    <a href="signup.html" class="btn btn-primary">Sign Up</a>
+                </div>
             </div>
         </div>
     </header>
@@ -42,7 +108,7 @@
     <section class="hero">
         <div class="hero-slider" aria-label="Featured highlights slider">
             <div class="hero-slides">
-                <div class="hero-slide active" data-index="0" style="background-image:url('images/artworks/painting1.svg')">
+                <div class="hero-slide active" data-index="0" style="background-image:url('images/new images/painting 1.webp')">
                     <div class="container">
                         <div class="hero-content">
                             <h1 class="color-accent-2">Discover and Collect Local Paintings</h1>
@@ -54,7 +120,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="hero-slide" data-index="1" style="background-image:url('images/artworks/painting2.svg')">
+                <div class="hero-slide" data-index="1" style="background-image:url('images/new images/painting 2.jpg')">
                     <div class="container">
                         <div class="hero-content">
                             <h1 class="color-accent-2">Bid Live. Win Originals.</h1>
@@ -66,7 +132,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="hero-slide" data-index="2" style="background-image:url('images/artworks/painting3.svg')">
+                <div class="hero-slide" data-index="2" style="background-image:url('images/new images/painting 3.jpg')">
                     <div class="container">
                         <div class="hero-content">
                             <h1 class="color-accent-2">Support Local Talent</h1>
@@ -78,6 +144,42 @@
                         </div>
                     </div>
                 </div>
+                <div class="hero-slide" data-index="3" style="background-image:url('images/new images/painting 4.jpg')">
+                    <div class="container">
+                        <div class="hero-content">
+                            <h1 class="color-accent-2">Abstract Art Collection</h1>
+                            <p>Explore contemporary abstract paintings that challenge perception and inspire creativity.</p>
+                            <div class="hero-buttons">
+                                <a href="gallery.html" class="btn btn-primary">View Collection</a>
+                                <a href="auctions.html" class="btn btn-outline">Bid Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-slide" data-index="4" style="background-image:url('images/new images/painting 5.jpg')">
+                    <div class="container">
+                        <div class="hero-content">
+                            <h1 class="color-accent-2">Seasonal Masterpieces</h1>
+                            <p>Discover paintings that capture the essence of every season with stunning color palettes.</p>
+                            <div class="hero-buttons">
+                                <a href="gallery.html" class="btn btn-primary">Browse Seasons</a>
+                                <a href="artists.html" class="btn btn-outline">Meet Artists</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-slide" data-index="5" style="background-image:url('images/new images/painting 6.jpg')">
+                    <div class="container">
+                        <div class="hero-content">
+                            <h1 class="color-accent-2">Landscape Wonders</h1>
+                            <p>Journey through breathtaking landscapes captured by talented local artists.</p>
+                            <div class="hero-buttons">
+                                <a href="gallery.html" class="btn btn-primary">Explore Landscapes</a>
+                                <a href="signup.html" class="btn btn-outline">Start Collecting</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <button class="hero-nav prev" aria-label="Previous slide">&#10094;</button>
             <button class="hero-nav next" aria-label="Next slide">&#10095;</button>
@@ -85,6 +187,9 @@
                 <button class="hero-dot active" data-index="0" aria-label="Slide 1" aria-selected="true"></button>
                 <button class="hero-dot" data-index="1" aria-label="Slide 2" aria-selected="false"></button>
                 <button class="hero-dot" data-index="2" aria-label="Slide 3" aria-selected="false"></button>
+                <button class="hero-dot" data-index="3" aria-label="Slide 4" aria-selected="false"></button>
+                <button class="hero-dot" data-index="4" aria-label="Slide 5" aria-selected="false"></button>
+                <button class="hero-dot" data-index="5" aria-label="Slide 6" aria-selected="false"></button>
             </div>
         </div>
     </section>
@@ -98,7 +203,7 @@
             </div>
             <div class="artwork-grid">
                 <div class="artwork-card">
-                    <img src="images/artworks/painting1.svg" alt="Vibrant Abstract">
+                    <img src="images/new images/painting 1.webp" alt="Vibrant Abstract">
                     <div class="artwork-info">
                         <h3>Vibrant Abstract</h3>
                         <p class="artist">By Jane Smith</p>
@@ -110,13 +215,13 @@
                                 data-id="painting1" 
                                 data-name="Vibrant Abstract" 
                                 data-price="450" 
-                                data-image="images/artworks/painting1.svg">
+                                data-image="images/new images/painting 1.webp">
                             Add to Cart
                         </button>
                     </div>
                 </div>
                 <div class="artwork-card">
-                    <img src="images/artworks/painting2.svg" alt="Color Fields">
+                    <img src="images/new images/painting 2.jpg" alt="Color Fields">
                     <div class="artwork-info">
                         <h3>Color Fields</h3>
                         <p class="artist">By Michael Johnson</p>
@@ -128,13 +233,13 @@
                                 data-id="painting2" 
                                 data-name="Color Fields" 
                                 data-price="680" 
-                                data-image="images/artworks/painting2.svg">
+                                data-image="images/new images/painting 2.jpg">
                             Add to Cart
                         </button>
                     </div>
                 </div>
                 <div class="artwork-card">
-                    <img src="images/artworks/painting3.svg" alt="Oceanic Hues">
+                    <img src="images/new images/painting 3.jpg" alt="Oceanic Hues">
                     <div class="artwork-info">
                         <h3>Oceanic Hues</h3>
                         <p class="artist">By Sarah Williams</p>
@@ -146,13 +251,13 @@
                                 data-id="painting3" 
                                 data-name="Oceanic Hues" 
                                 data-price="320" 
-                                data-image="images/artworks/painting3.svg">
+                                data-image="images/new images/painting 3.jpg">
                             Add to Cart
                         </button>
                     </div>
                 </div>
                 <div class="artwork-card">
-                    <img src="images/artworks/painting4.svg" alt="Abstract Harmony">
+                    <img src="images/new images/painting 4.jpg" alt="Abstract Harmony">
                     <div class="artwork-info">
                         <h3>Abstract Harmony</h3>
                         <p class="artist">By David Brown</p>
@@ -164,13 +269,13 @@
                                 data-id="painting4" 
                                 data-name="Abstract Harmony" 
                                 data-price="550" 
-                                data-image="images/artworks/painting4.svg">
+                                data-image="images/new images/painting 4.jpg">
                             Add to Cart
                         </button>
                     </div>
                 </div>
                 <div class="artwork-card">
-                    <img src="images/artworks/autumn-colors.svg" alt="Autumn Colors">
+                    <img src="images/new images/painting 5.jpg" alt="Autumn Colors">
                     <div class="artwork-info">
                         <h3>Autumn Colors</h3>
                         <p class="artist">By Emma Clark</p>
@@ -182,13 +287,13 @@
                                 data-id="painting5" 
                                 data-name="Autumn Colors" 
                                 data-price="410" 
-                                data-image="images/artworks/autumn-colors.svg">
+                                data-image="images/new images/painting 5.jpg">
                             Add to Cart
                         </button>
                     </div>
                 </div>
                 <div class="artwork-card">
-                    <img src="images/artworks/mountain-lake.svg" alt="Mountain Lake">
+                    <img src="images/new images/painting 6.jpg" alt="Mountain Lake">
                     <div class="artwork-info">
                         <h3>Mountain Lake</h3>
                         <p class="artist">By Olivia Green</p>
@@ -200,11 +305,53 @@
                                 data-id="painting6" 
                                 data-name="Mountain Lake" 
                                 data-price="380" 
-                                data-image="images/artworks/mountain-lake.svg">
+                                data-image="images/new images/painting 6.jpg">
                             Add to Cart
                         </button>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Artworks -->
+    <section class="featured-artworks">
+        <div class="container">
+            <div class="section-header">
+                <h2>More from Jane Smith</h2>
+                <a href="#" class="view-all">View All</a>
+            </div>
+            <div class="artwork-grid">
+                <a href="artwork-detail.html" class="artwork-card">
+                    <img src="images/new images/painting 2.jpg" alt="Artwork 1">
+                    <div class="artwork-info">
+                        <h3>Mountain Lake</h3>
+                        <p class="artist">By Jane Smith</p>
+                        <div class="artwork-meta">
+                            <span class="price">$380</span>
+                            <span class="auction">Fixed Price</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="artwork-detail.html" class="artwork-card">
+                    <img src="images/new images/painting 3.jpg" alt="Artwork 2">
+                    <div class="artwork-info">
+                        <h3>Desert Sunrise</h3>
+                        <p class="p>By Jane Smith</p>
+                        <div class="artwork-meta">
+                            <span class="price">$520</span>
+                            <span class="auction">Live Auction</span>
+                        </div>
+                    </div>
+                </a>
+                <a href="artwork-detail.html" class="artwork-card">
+                    <img src="images/new images/painting 4.jpg" alt="Artwork 3">
+                    <div class="artwork-info">
+                        <h3>Forest Path</h3>
+                        <p class="artist">By Jane Smith</p>
+                        <div class="artify">Fixed Price</span>
+                    </div>
+                </a>
             </div>
         </div>
     </section>
@@ -281,5 +428,97 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Check user session and display profile
+        document.addEventListener('DOMContentLoaded', function() {
+            checkUserSession();
+        });
+        
+        function checkUserSession() {
+            const sessionData = localStorage.getItem('userSession') || sessionStorage.getItem('userSession');
+            
+            if (sessionData) {
+                const user = JSON.parse(sessionData);
+                displayUserProfile(user);
+            } else {
+                showAuthLinks();
+            }
+        }
+        
+        function displayUserProfile(user) {
+            const userProfile = document.getElementById('user-profile');
+            const authLinks = document.getElementById('auth-links');
+            const userName = document.getElementById('user-name');
+            
+            // Display user name
+            userName.textContent = `Welcome, ${user.firstName}!`;
+            
+            // Show user profile, hide auth links
+            userProfile.style.display = 'flex';
+            authLinks.style.display = 'none';
+        }
+        
+        function showAuthLinks() {
+            const userProfile = document.getElementById('user-profile');
+            const authLinks = document.getElementById('auth-links');
+            
+            // Hide user profile, show auth links
+            userProfile.style.display = 'none';
+            authLinks.style.display = 'flex';
+        }
+        
+        function logout() {
+            // Clear session data
+            localStorage.removeItem('userSession');
+            sessionStorage.removeItem('userSession');
+            
+            // Show auth links
+            showAuthLinks();
+            
+            // Optional: Show logout message
+            showLogoutMessage();
+        }
+        
+        function showLogoutMessage() {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'logout-message';
+            messageDiv.textContent = 'Successfully logged out!';
+            messageDiv.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #4caf50;
+                color: white;
+                padding: 15px 20px;
+                border-radius: 8px;
+                font-weight: 600;
+                z-index: 1000;
+                animation: slideInRight 0.3s ease-out;
+            `;
+            
+            document.body.appendChild(messageDiv);
+            
+            // Remove message after 3 seconds
+            setTimeout(() => {
+                messageDiv.remove();
+            }, 3000);
+        }
+        
+        // Add CSS animation for logout message
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideInRight {
+                from {
+                    opacity: 0;
+                    transform: translateX(100%);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
 </body>
 </html>

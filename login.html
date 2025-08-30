@@ -5,6 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | Painting Auctions</title>
     <link rel="stylesheet" href="login.css">
+    <style>
+        .error-message {
+            color: #f44336;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group input:focus {
+            border-color: #6a11cb;
+            outline: none;
+        }
+        
+        .form-group input.error {
+            border-color: #f44336;
+        }
+        
+        .success-message {
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -35,18 +71,20 @@
         <div class="container">
             <div class="login-container">
                 <h2>Welcome Back</h2>
-                <form class="login-form">
+                <form class="login-form" id="loginForm">
                     <div class="form-group">
                         <label for="email">Email Address</label>
-                        <input type="email" id="email" placeholder="Enter your email" required>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                        <div class="error-message" id="email-error"></div>
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" id="password" placeholder="Enter your password" required>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                        <div class="error-message" id="password-error"></div>
                     </div>
                     <div class="remember-forgot">
                         <label class="remember-label">
-                            <input type="checkbox"> Remember me
+                            <input type="checkbox" id="remember" name="remember"> Remember me
                         </label>
                         <a href="#" class="forgot-password">Forgot password?</a>
                     </div>
@@ -93,5 +131,150 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Login form handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.getElementById('loginForm');
+            
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                if (validateLoginForm()) {
+                    handleLogin();
+                }
+            });
+        });
+        
+        function validateLoginForm() {
+            clearAllErrors();
+            
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            
+            let isValid = true;
+            
+            // Validate email
+            if (!email) {
+                showError('email-error', 'Email is required');
+                isValid = false;
+            } else if (!isValidEmail(email)) {
+                showError('email-error', 'Please enter a valid email address');
+                isValid = false;
+            }
+            
+            // Validate password
+            if (!password) {
+                showError('password-error', 'Password is required');
+                isValid = false;
+            }
+            
+            return isValid;
+        }
+        
+        function handleLogin() {
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const remember = document.getElementById('remember').checked;
+            
+            // Get users from localStorage
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            
+            // Find user with matching credentials
+            const user = users.find(u => u.email === email && u.password === password);
+            
+            if (user) {
+                // Store user session
+                const sessionData = {
+                    userId: user.id,
+                    email: user.email,
+                    firstName: user.firstName,
+                    lastName: user.lastName,
+                    userType: user.userType,
+                    loginTime: new Date().toISOString()
+                };
+                
+                if (remember) {
+                    localStorage.setItem('userSession', JSON.stringify(sessionData));
+                } else {
+                    sessionStorage.setItem('userSession', JSON.stringify(sessionData));
+                }
+                
+                // Show success message and redirect
+                showSuccessMessage(`Welcome back, ${user.firstName}! Redirecting...`);
+                
+                setTimeout(() => {
+                    // Redirect based on user type
+                    if (user.userType === 'artist') {
+                        window.location.href = 'artist-profile.html';
+                    } else {
+                        window.location.href = 'index.html';
+                    }
+                }, 2000);
+                
+            } else {
+                showError('email-error', 'Invalid email or password');
+            }
+        }
+        
+        function showError(elementId, message) {
+            const errorElement = document.getElementById(elementId);
+            if (errorElement) {
+                errorElement.textContent = message;
+                errorElement.style.display = 'block';
+            }
+        }
+        
+        function clearAllErrors() {
+            const errorElements = document.querySelectorAll('.error-message');
+            errorElements.forEach(element => {
+                element.textContent = '';
+                element.style.display = 'none';
+            });
+        }
+        
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+        
+        function showSuccessMessage(message) {
+            const successDiv = document.createElement('div');
+            successDiv.className = 'success-message';
+            successDiv.textContent = message;
+            successDiv.style.cssText = `
+                background: #4caf50;
+                color: white;
+                padding: 15px;
+                border-radius: 8px;
+                text-align: center;
+                margin: 20px 0;
+                font-weight: 600;
+            `;
+            
+            const form = document.getElementById('loginForm');
+            form.parentNode.insertBefore(successDiv, form);
+        }
+        
+        // Check if user is already logged in
+        function checkExistingSession() {
+            const sessionData = localStorage.getItem('userSession') || sessionStorage.getItem('userSession');
+            
+            if (sessionData) {
+                const user = JSON.parse(sessionData);
+                showSuccessMessage(`Welcome back, ${user.firstName}! You are already logged in.`);
+                
+                setTimeout(() => {
+                    if (user.userType === 'artist') {
+                        window.location.href = 'artist-profile.html';
+                    } else {
+                        window.location.href = 'index.html';
+                    }
+                }, 2000);
+            }
+        }
+        
+        // Check session on page load
+        checkExistingSession();
+    </script>
 </body>
 </html>

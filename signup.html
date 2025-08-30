@@ -5,6 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up | Painting Auctions</title>
     <link rel="stylesheet" href="signup.css">
+    <style>
+        .error-message {
+            color: #f44336;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus {
+            border-color: #6a11cb;
+            outline: none;
+        }
+        
+        .form-group input.error,
+        .form-group select.error {
+            border-color: #f44336;
+        }
+        
+        .success-message {
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -40,41 +78,48 @@
         <div class="container">
             <div class="login-container">
                 <h2>Create Account</h2>
-                <form class="signup-form">
+                <form class="signup-form" id="signupForm">
                     <div class="form-group">
                         <label for="first-name">First Name</label>
-                        <input type="text" id="first-name" placeholder="Enter your first name" required>
+                        <input type="text" id="first-name" name="firstName" placeholder="Enter your first name" required>
+                        <div class="error-message" id="firstName-error"></div>
                     </div>
                     <div class="form-group">
                         <label for="last-name">Last Name</label>
-                        <input type="text" id="last-name" placeholder="Enter your last name" required>
+                        <input type="text" id="last-name" name="lastName" placeholder="Enter your last name" required>
+                        <div class="error-message" id="lastName-error"></div>
                     </div>
                     <div class="form-group">
                         <label for="email">Email Address</label>
-                        <input type="email" id="email" placeholder="Enter your email" required>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                        <div class="error-message" id="email-error"></div>
                     </div>
                     <div class="form-group">
                         <label for="password">Password</label>
-                        <input type="password" id="password" placeholder="Create a password" required>
+                        <input type="password" id="password" name="password" placeholder="Create a password (min 6 characters)" required>
+                        <div class="error-message" id="password-error"></div>
                     </div>
                     <div class="form-group">
                         <label for="confirm-password">Confirm Password</label>
-                        <input type="password" id="confirm-password" placeholder="Confirm your password" required>
+                        <input type="password" id="confirm-password" name="confirmPassword" placeholder="Confirm your password" required>
+                        <div class="error-message" id="confirmPassword-error"></div>
                     </div>
                     <div class="form-group">
                         <label for="user-type">I am a:</label>
-                        <select id="user-type" required>
+                        <select id="user-type" name="userType" required>
                             <option value="">Select user type</option>
                             <option value="buyer">Painting Buyer/Collector</option>
                             <option value="artist">Painting Artist</option>
                         </select>
+                        <div class="error-message" id="userType-error"></div>
                     </div>
                     <div class="form-group">
                         <label class="remember-label">
-                            <input type="checkbox" required> I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                            <input type="checkbox" id="terms" name="terms" required> I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
                         </label>
+                        <div class="error-message" id="terms-error"></div>
                     </div>
-<button type="submit" class="signup-button">Sign Up</button>
+                    <button type="submit" class="signup-button">Sign Up</button>
                 </form>
                 <div class="signup-link">
                     Already have an account? <a href="login.html">Login</a>
@@ -117,5 +162,166 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        // Signup form handling
+        document.addEventListener('DOMContentLoaded', function() {
+            const signupForm = document.getElementById('signupForm');
+            
+            signupForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                if (validateSignupForm()) {
+                    handleSignup();
+                }
+            });
+        });
+        
+        function validateSignupForm() {
+            clearAllErrors();
+            
+            const firstName = document.getElementById('first-name').value.trim();
+            const lastName = document.getElementById('last-name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            const userType = document.getElementById('user-type').value;
+            const terms = document.getElementById('terms').checked;
+            
+            let isValid = true;
+            
+            // Validate first name
+            if (!firstName) {
+                showError('firstName-error', 'First name is required');
+                isValid = false;
+            } else if (firstName.length < 2) {
+                showError('firstName-error', 'First name must be at least 2 characters');
+                isValid = false;
+            }
+            
+            // Validate last name
+            if (!lastName) {
+                showError('lastName-error', 'Last name is required');
+                isValid = false;
+            } else if (lastName.length < 2) {
+                showError('lastName-error', 'Last name must be at least 2 characters');
+                isValid = false;
+            }
+            
+            // Validate email
+            if (!email) {
+                showError('email-error', 'Email is required');
+                isValid = false;
+            } else if (!isValidEmail(email)) {
+                showError('email-error', 'Please enter a valid email address');
+                isValid = false;
+            }
+            
+            // Validate password
+            if (!password) {
+                showError('password-error', 'Password is required');
+                isValid = false;
+            } else if (password.length < 6) {
+                showError('password-error', 'Password must be at least 6 characters');
+                isValid = false;
+            }
+            
+            // Validate confirm password
+            if (!confirmPassword) {
+                showError('confirmPassword-error', 'Please confirm your password');
+                isValid = false;
+            } else if (password !== confirmPassword) {
+                showError('confirmPassword-error', 'Passwords do not match');
+                isValid = false;
+            }
+            
+            // Validate user type
+            if (!userType) {
+                showError('userType-error', 'Please select a user type');
+                isValid = false;
+            }
+            
+            // Validate terms
+            if (!terms) {
+                showError('terms-error', 'You must agree to the Terms of Service and Privacy Policy');
+                isValid = false;
+            }
+            
+            return isValid;
+        }
+        
+        function handleSignup() {
+            const formData = {
+                firstName: document.getElementById('first-name').value.trim(),
+                lastName: document.getElementById('last-name').value.trim(),
+                email: document.getElementById('email').value.trim(),
+                password: document.getElementById('password').value,
+                userType: document.getElementById('user-type').value
+            };
+            
+            // Store user data in localStorage (in a real app, this would go to a server)
+            const users = JSON.parse(localStorage.getItem('users') || '[]');
+            
+            // Check if email already exists
+            if (users.find(user => user.email === formData.email)) {
+                showError('email-error', 'An account with this email already exists');
+                return;
+            }
+            
+            // Add new user
+            users.push({
+                ...formData,
+                id: Date.now(),
+                createdAt: new Date().toISOString()
+            });
+            
+            localStorage.setItem('users', JSON.stringify(users));
+            
+            // Show success message and redirect
+            showSuccessMessage('Account created successfully! Redirecting to login...');
+            
+            setTimeout(() => {
+                window.location.href = 'login.html';
+            }, 2000);
+        }
+        
+        function showError(elementId, message) {
+            const errorElement = document.getElementById(elementId);
+            if (errorElement) {
+                errorElement.textContent = message;
+                errorElement.style.display = 'block';
+            }
+        }
+        
+        function clearAllErrors() {
+            const errorElements = document.querySelectorAll('.error-message');
+            errorElements.forEach(element => {
+                element.textContent = '';
+                element.style.display = 'none';
+            });
+        }
+        
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+        
+        function showSuccessMessage(message) {
+            const successDiv = document.createElement('div');
+            successDiv.className = 'success-message';
+            successDiv.textContent = message;
+            successDiv.style.cssText = `
+                background: #4caf50;
+                color: white;
+                padding: 15px;
+                border-radius: 8px;
+                text-align: center;
+                margin: 20px 0;
+                font-weight: 600;
+            `;
+            
+            const form = document.getElementById('signupForm');
+            form.parentNode.insertBefore(successDiv, form);
+        }
+    </script>
 </body>
 </html>

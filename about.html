@@ -5,6 +5,96 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us | Painting Auctions</title>
     <link rel="stylesheet" href="about.css">
+    <style>
+        .painter-logo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+        }
+        
+        .painter-logo:hover {
+            transform: scale(1.1);
+        }
+        
+        .team-member {
+            text-align: center;
+            padding: 30px 20px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .team-role {
+            color: #6a11cb;
+            font-weight: 600;
+            margin: 10px 0;
+        }
+        
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 8px 15px;
+            border-radius: 25px;
+            color: white;
+            font-weight: 500;
+        }
+        
+        .user-name {
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .logout-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .logout-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .auth-buttons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .user-profile {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .user-info {
+                flex-direction: column;
+                text-align: center;
+                padding: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -26,8 +116,16 @@
             <div class="auth-buttons">
                 <a href="kart.html" class="btn btn-outline">Cart (<span id="cart-count">0</span>)</a>
                 <a href="payment.html" class="btn btn-outline">Payment</a>
-                <a href="login.html" class="btn btn-outline">Login</a>
-                <a href="signup.html" class="btn btn-primary">Sign Up</a>
+                <div id="user-profile" class="user-profile" style="display: none;">
+                    <div class="user-info">
+                        <span class="user-name" id="user-name"></span>
+                        <button class="logout-btn" onclick="logout()">Logout</button>
+                    </div>
+                </div>
+                <div id="auth-links">
+                    <a href="login.html" class="btn btn-outline">Login</a>
+                    <a href="signup.html" class="btn btn-primary">Sign Up</a>
+                </div>
             </div>
         </div>
     </header>
@@ -71,28 +169,49 @@
             <h2>Our Team</h2>
             <div class="team-grid">
                 <div class="team-member">
-                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=300&q=80" alt="Alex Johnson" class="team-avatar">
-                    <h3>Alex Johnson</h3>
-                    <p class="team-role">Founder & CEO</p>
-                    <p>Passionate about supporting local artists and building communities through art.</p>
+                    <div class="painter-logo">
+                        <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="60" cy="60" r="55" fill="#6a11cb" stroke="#2575fc" stroke-width="3"/>
+                            <path d="M30 45 Q60 25 90 45 Q60 65 30 45" fill="#ff6b6b"/>
+                            <path d="M35 50 Q60 35 85 50 Q60 60 35 50" fill="#4ecdc4"/>
+                            <circle cx="45" cy="40" r="3" fill="white"/>
+                            <circle cx="75" cy="40" r="3" fill="white"/>
+                            <path d="M50 70 Q60 80 70 70" stroke="white" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <h3>Hansika Khanna</h3>
+                    <p class="team-role">Creative Director</p>
+                    <p>Leading our artistic vision and curating exceptional painting collections.</p>
                 </div>
                 <div class="team-member">
-                    <img src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?auto=format&fit=crop&w=300&q=80" alt="Samantha Lee" class="team-avatar">
-                    <h3>Samantha Lee</h3>
-                    <p class="team-role">Art Director</p>
-                    <p>Curating exceptional collections and ensuring quality standards across our platform.</p>
+                    <div class="painter-logo">
+                        <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="60" cy="60" r="55" fill="#2575fc" stroke="#6a11cb" stroke-width="3"/>
+                            <path d="M25 50 Q60 30 95 50 Q60 70 25 50" fill="#ffd93d"/>
+                            <path d="M30 55 Q60 40 90 55 Q60 65 30 55" fill="#ff6b6b"/>
+                            <circle cx="40" cy="45" r="3" fill="white"/>
+                            <circle cx="80" cy="45" r="3" fill="white"/>
+                            <path d="M45 75 Q60 85 75 75" stroke="white" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <h3>Hardik Saluja</h3>
+                    <p class="team-role">Technical Lead</p>
+                    <p>Building innovative auction technology and ensuring seamless user experience.</p>
                 </div>
                 <div class="team-member">
-                    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=300&q=80" alt="Michael Chen" class="team-avatar">
-                    <h3>Michael Chen</h3>
-                    <p class="team-role">CTO</p>
-                    <p>Building innovative technology solutions to enhance the art buying experience.</p>
-                </div>
-                <div class="team-member">
-                    <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=300&q=80" alt="Emily Rodriguez" class="team-avatar">
-                    <h3>Emily Rodriguez</h3>
+                    <div class="painter-logo">
+                        <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="60" cy="60" r="55" fill="#ff6b6b" stroke="#4ecdc4" stroke-width="3"/>
+                            <path d="M35 45 Q60 25 85 45 Q60 65 35 45" fill="#6a11cb"/>
+                            <path d="M40 50 Q60 35 80 50 Q60 60 40 50" fill="#ffd93d"/>
+                            <circle cx="50" cy="40" r="3" fill="white"/>
+                            <circle cx="70" cy="40" r="3" fill="white"/>
+                            <path d="M55 70 Q60 80 65 70" stroke="white" stroke-width="2" fill="none"/>
+                        </svg>
+                    </div>
+                    <h3>Hardik Singla</h3>
                     <p class="team-role">Community Manager</p>
-                    <p>Fostering relationships between artists and collectors in our growing community.</p>
+                    <p>Fostering relationships between artists and art collectors in our growing community.</p>
                 </div>
             </div>
         </div>
@@ -156,5 +275,87 @@
         </div>
     </footer>
     <script src="script.js"></script>
+    <script>
+        // Check user session and display profile
+        document.addEventListener('DOMContentLoaded', function() {
+            checkUserSession();
+        });
+        
+        function checkUserSession() {
+            const sessionData = localStorage.getItem('userSession') || sessionStorage.getItem('userSession');
+            
+            if (sessionData) {
+                const user = JSON.parse(sessionData);
+                displayUserProfile(user);
+            } else {
+                showAuthLinks();
+            }
+        }
+        
+        function displayUserProfile(user) {
+            const userProfile = document.getElementById('user-profile');
+            const authLinks = document.getElementById('auth-links');
+            const userName = document.getElementById('user-name');
+            
+            userName.textContent = `Welcome, ${user.firstName}!`;
+            userProfile.style.display = 'flex';
+            authLinks.style.display = 'none';
+        }
+        
+        function showAuthLinks() {
+            const userProfile = document.getElementById('user-profile');
+            const authLinks = document.getElementById('auth-links');
+            
+            userProfile.style.display = 'none';
+            authLinks.style.display = 'flex';
+        }
+        
+        function logout() {
+            localStorage.removeItem('userSession');
+            sessionStorage.removeItem('userSession');
+            showAuthLinks();
+            showLogoutMessage();
+        }
+        
+        function showLogoutMessage() {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'logout-message';
+            messageDiv.textContent = 'Successfully logged out!';
+            messageDiv.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #4caf50;
+                color: white;
+                padding: 15px 20px;
+                border-radius: 8px;
+                font-weight: 600;
+                z-index: 1000;
+                animation: slideInRight 0.3s ease-out;
+            `;
+            
+            document.body.appendChild(messageDiv);
+            
+            setTimeout(() => {
+                messageDiv.remove();
+            }, 3000);
+        }
+        
+        // Add CSS animation for logout message
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideInRight {
+                from {
+                    opacity: 0;
+                    transform: translateX(100%);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
 </body>
 </html>

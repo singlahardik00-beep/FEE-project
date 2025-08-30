@@ -5,6 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Live Painting Auctions | Painting Auctions</title>
     <link rel="stylesheet" href="auctions.css">
+    <style>
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 8px 15px;
+            border-radius: 25px;
+            color: white;
+            font-weight: 500;
+        }
+        
+        .user-name {
+            font-size: 14px;
+            font-weight: 600;
+        }
+        
+        .logout-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .logout-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .auth-buttons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            .user-profile {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .user-info {
+                flex-direction: column;
+                text-align: center;
+                padding: 10px;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -26,8 +84,16 @@
             <div class="auth-buttons">
                 <a href="kart.html" class="btn btn-outline">Cart (<span id="cart-count">0</span>)</a>
                 <a href="payment.html" class="btn btn-outline">Payment</a>
-                <a href="login.html" class="btn btn-outline">Login</a>
-                <a href="signup.html" class="btn btn-primary">Sign Up</a>
+                <div id="user-profile" class="user-profile" style="display: none;">
+                    <div class="user-info">
+                        <span class="user-name" id="user-name"></span>
+                        <button class="logout-btn" onclick="logout()">Logout</button>
+                    </div>
+                </div>
+                <div id="auth-links">
+                    <a href="login.html" class="btn btn-outline">Login</a>
+                    <a href="signup.html" class="btn btn-primary">Sign Up</a>
+                </div>
             </div>
         </div>
     </header>
@@ -50,7 +116,7 @@
             </div>
             <div class="auction-grid">
                 <div class="auction-card">
-                    <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80" alt="Sunset Over the Mountains" class="auction-image">
+                    <img src="images/new images/painting 1.webp" alt="Sunset Over the Mountains" class="auction-image">
                     <div class="auction-info">
                         <h3>Sunset Over the Mountains</h3>
                         <p class="artist">By Jane Smith</p>
@@ -72,7 +138,7 @@
                     </div>
                 </div>
                 <div class="auction-card">
-                    <img src="https://images.unsplash.com/photo-1496483648148-47c686dc86a8?auto=format&fit=crop&w=1200&q=80" alt="Urban Reflections" class="auction-image">
+                    <img src="images/new images/painting 2.jpg" alt="Urban Reflections" class="auction-image">
                     <div class="auction-info">
                         <h3>Urban Reflections</h3>
                         <p class="artist">By Michael Johnson</p>
@@ -94,7 +160,7 @@
                     </div>
                 </div>
                 <div class="auction-card">
-                    <img src="https://images.unsplash.com/photo-1470115636492-6d2b56f9146e?auto=format&fit=crop&w=1200&q=80" alt="City Lights" class="auction-image">
+                    <img src="images/new images/painting 8.jpg" alt="City Lights" class="auction-image">
                     <div class="auction-info">
                         <h3>City Lights</h3>
                         <p class="artist">By Michael Johnson</p>
@@ -116,7 +182,7 @@
                     </div>
                 </div>
                 <div class="auction-card">
-                    <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1200&q=80" alt="Desert Sunrise" class="auction-image">
+                    <img src="images/new images/painting 6.jpg" alt="Desert Sunrise" class="auction-image">
                     <div class="auction-info">
                         <h3>Desert Sunrise</h3>
                         <p class="artist">By Jane Smith</p>
@@ -138,7 +204,7 @@
                     </div>
                 </div>
                 <div class="auction-card">
-                    <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=80" alt="Abstract Harmony" class="auction-image">
+                    <img src="images/new images/painting 4.jpg" alt="Abstract Harmony" class="auction-image">
                     <div class="auction-info">
                         <h3>Abstract Harmony</h3>
                         <p class="artist">By David Brown</p>
@@ -160,7 +226,7 @@
                     </div>
                 </div>
                 <div class="auction-card">
-                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80" alt="Ocean Waves" class="auction-image">
+                    <img src="images/new images/painting 3.jpg" alt="Ocean Waves" class="auction-image">
                     <div class="auction-info">
                         <h3>Ocean Waves</h3>
                         <p class="artist">By Sarah Williams</p>
@@ -218,5 +284,87 @@
         </div>
     </footer>
     <script src="script.js"></script>
+    <script>
+        // Check user session and display profile
+        document.addEventListener('DOMContentLoaded', function() {
+            checkUserSession();
+        });
+        
+        function checkUserSession() {
+            const sessionData = localStorage.getItem('userSession') || sessionStorage.getItem('userSession');
+            
+            if (sessionData) {
+                const user = JSON.parse(sessionData);
+                displayUserProfile(user);
+            } else {
+                showAuthLinks();
+            }
+        }
+        
+        function displayUserProfile(user) {
+            const userProfile = document.getElementById('user-profile');
+            const authLinks = document.getElementById('auth-links');
+            const userName = document.getElementById('user-name');
+            
+            userName.textContent = `Welcome, ${user.firstName}!`;
+            userProfile.style.display = 'flex';
+            authLinks.style.display = 'none';
+        }
+        
+        function showAuthLinks() {
+            const userProfile = document.getElementById('user-profile');
+            const authLinks = document.getElementById('auth-links');
+            
+            userProfile.style.display = 'none';
+            authLinks.style.display = 'flex';
+        }
+        
+        function logout() {
+            localStorage.removeItem('userSession');
+            sessionStorage.removeItem('userSession');
+            showAuthLinks();
+            showLogoutMessage();
+        }
+        
+        function showLogoutMessage() {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = 'logout-message';
+            messageDiv.textContent = 'Successfully logged out!';
+            messageDiv.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: #4caf50;
+                color: white;
+                padding: 15px 20px;
+                border-radius: 8px;
+                font-weight: 600;
+                z-index: 1000;
+                animation: slideInRight 0.3s ease-out;
+            `;
+            
+            document.body.appendChild(messageDiv);
+            
+            setTimeout(() => {
+                messageDiv.remove();
+            }, 3000);
+        }
+        
+        // Add CSS animation for logout message
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideInRight {
+                from {
+                    opacity: 0;
+                    transform: translateX(100%);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateX(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
 </body>
 </html>
