@@ -371,6 +371,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Initialize contact form storage
     initContactFormStorage();
+
+    // Initialize auction room functionality
+    initAuctionRoom();
 });
 
 // Export functions for global access
@@ -522,4 +525,108 @@ function initContactFormStorage() {
         showNotification('Message sent! We will get back to you soon.', 'success');
         form.reset();
     });
+}
+
+// Initialize auction room functionality
+function initAuctionRoom() {
+    // Initialize countdown timers
+    initCountdowns();
+    
+    // Handle bid form submissions
+    const bidForms = document.querySelectorAll('.bid-form');
+    bidForms.forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const bidInput = form.querySelector('input[type="number"]');
+            const currentBidElement = form.closest('.auction-details')?.querySelector('.current-bid-amount');
+            const currentBid = parseInt(currentBidElement?.textContent.replace('$', '') || '0');
+            const bidAmount = parseInt(bidInput.value);
+            
+            if (bidAmount <= currentBid) {
+                showNotification('Bid must be higher than current bid!', 'error');
+                return;
+            }
+            
+            // Update current bid display
+            if (currentBidElement) {
+                currentBidElement.textContent = `$${bidAmount}`;
+            }
+            
+            // Add bid to history (temporary - will reset on page refresh)
+            const bidHistory = form.closest('.auction-details')?.querySelector('.bid-history .bids, .bid-history');
+            if (bidHistory) {
+                const newBid = document.createElement('div');
+                newBid.className = 'bid-item';
+                newBid.innerHTML = `
+                    <div class="bidder">You</div>
+                    <div>
+                        <span class="bid-amount">$${bidAmount}</span>
+                        <span class="bid-time">Just now</span>
+                    </div>
+                `;
+                
+                // Insert at the top of bid history
+                if (bidHistory.firstChild) {
+                    bidHistory.insertBefore(newBid, bidHistory.firstChild);
+                } else {
+                    bidHistory.appendChild(newBid);
+                }
+            }
+            
+            // Update form minimum bid
+            bidInput.min = bidAmount + 5;
+            bidInput.placeholder = `Minimum $${bidAmount + 5}`;
+            bidInput.value = '';
+            
+            // Update form data attribute
+            form.setAttribute('data-current-bid', bidAmount);
+            
+            showNotification(`Bid placed successfully! $${bidAmount}`, 'success');
+        });
+    });
+    
+    // Handle add to cart buttons in auction room
+    const addToCartBtns = document.querySelectorAll('.add-to-cart-btn');
+    addToCartBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const id = this.getAttribute('data-id');
+            const name = this.getAttribute('data-name');
+            const price = parseFloat(this.getAttribute('data-price'));
+            const image = this.getAttribute('data-image');
+            
+            addToCart(id, name, price, image);
+        });
+    });
+    
+    // Reset auction room to original state on page load
+    // This ensures the page returns to its original state after refresh
+    const resetAuctionRoom = () => {
+        // Reset current bid to original value
+        const currentBidElements = document.querySelectorAll('.current-bid-amount');
+        currentBidElements.forEach(element => {
+            if (element.textContent.includes('$')) {
+                const originalBid = element.getAttribute('data-original-bid') || '450';
+                element.textContent = `$${originalBid}`;
+            }
+        });
+        
+        // Reset bid form minimum values
+        const bidInputs = document.querySelectorAll('.bid-form input[type="number"]');
+        bidInputs.forEach(input => {
+            const originalMin = input.getAttribute('data-original-min') || '475';
+            input.min = originalMin;
+            input.placeholder = `Minimum $${originalMin}`;
+        });
+        
+        // Reset form data attributes
+        const bidForms = document.querySelectorAll('.bid-form');
+        bidForms.forEach(form => {
+            const originalBid = form.getAttribute('data-original-current-bid') || '450';
+            form.setAttribute('data-current-bid', originalBid);
+        });
+    };
+    
+    // Call reset function on initialization
+    resetAuctionRoom();
 }

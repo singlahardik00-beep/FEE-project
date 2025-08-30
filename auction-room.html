@@ -60,16 +60,16 @@
                 <aside class="auction-details">
                     <h3>Live Auction</h3>
                     <div class="current-bid">
-                        <div class="current-bid-amount">$450</div>
+                        <div class="current-bid-amount" data-original-bid="450">$450</div>
                         <div class="current-bid-label">Current Bid</div>
                     </div>
                     <div class="time-remaining" data-end-time="2024-12-31T23:59:59">
                         <div class="time-remaining-label">Auction Ends In</div>
                         <div class="countdown">12h 34m 56s</div>
                     </div>
-                    <form class="bid-form" data-current-bid="450">
+                    <form class="bid-form" data-current-bid="450" data-original-current-bid="450">
                         <label for="bid-amount">Bid Amount (USD)</label>
-                        <input id="bid-amount" type="number" min="475" step="5" placeholder="Minimum $475">
+                        <input id="bid-amount" type="number" min="475" step="5" placeholder="Minimum $475" data-original-min="475">
                         <button type="submit" class="btn btn-primary place-bid-btn">Place Bid</button>
                     </form>
                     <div class="bid-history">
