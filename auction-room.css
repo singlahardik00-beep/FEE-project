@@ -308,6 +308,18 @@ nav ul li a.active {
     font-size: 1.1rem;
 }
 
+.place-bid-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(106, 17, 203, 0.3);
+}
+
+.place-bid-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
 .bid-history {
     margin-top: 30px;
 }
