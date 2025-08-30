@@ -73,34 +73,17 @@
                         <button type="submit" class="btn btn-primary place-bid-btn">Place Bid</button>
                     </form>
                     <div class="bid-history">
-                        <h4>Bid History</h4>
-                        <div class="bid-item">
-                            <div class="bidder">User123</div>
-                            <div>
-                                <span class="bid-amount">$450</span>
-                                <span class="bid-time">2 hours ago</span>
-                            </div>
+                        <h4>Bid History <span class="bid-count">(0 bids)</span></h4>
+                        <div class="bid-history-controls">
+                            <button class="btn btn-outline clear-bids-btn" title="Clear bid history (for testing)">
+                                <span>🗑️</span>
+                            </button>
+                            <button class="btn btn-outline refresh-bids-btn" title="Refresh bid history">
+                                <span>🔄</span>
+                            </button>
                         </div>
-                        <div class="bid-item">
-                            <div class="bidder">ArtLover</div>
-                            <div>
-                                <span class="bid-amount">$425</span>
-                                <span class="bid-time">3 hours ago</span>
-                            </div>
-                        </div>
-                        <div class="bid-item">
-                            <div class="bidder">CollectorPro</div>
-                            <div>
-                                <span class="bid-amount">$400</span>
-                                <span class="bid-time">5 hours ago</span>
-                            </div>
-                        </div>
-                        <div class="bid-item">
-                            <div class="bidder">ArtEnthusiast</div>
-                            <div>
-                                <span class="bid-amount">$375</span>
-                                <span class="bid-time">6 hours ago</span>
-                            </div>
+                        <div class="bid-items-container">
+                            <!-- Bid items will be dynamically populated here -->
                         </div>
                     </div>
                 </aside>
